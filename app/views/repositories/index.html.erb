@@ -1,0 +1,7 @@
+<h3>Repositories</h3>
+
+<table>
+  <% @repositories.each do |repo| %>
+  <tr><td><%= link_to repo.name, repo.url, target: '_blank' %></td></tr>
+  <% end %>
+</table>

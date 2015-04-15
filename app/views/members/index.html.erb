@@ -1,0 +1,10 @@
+<h3>Members</h3>
+
+<table>
+  <% @members.each do |member| %>
+  <tr>
+    <td><%= member.name %></td>
+    <td><%= member.username %></td>
+  </tr>
+  <% end %>
+</table>
