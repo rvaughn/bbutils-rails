@@ -1,7 +1,18 @@
 <h3>Repositories</h3>
 
-<table>
-  <% @repositories.each do |repo| %>
-  <tr><td><%= link_to repo.name, repo.url, target: '_blank' %></td></tr>
-  <% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @repositories.each do |repo| %>
+    <tr>
+      <td><%= link_to repo.name, repo.url, target: '_blank' %></td>
+      <td><%= repo.updated_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
