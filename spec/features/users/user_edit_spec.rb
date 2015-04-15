@@ -14,7 +14,7 @@ feature 'User edit', :devise do
   # Scenario: User changes email address
   #   Given I am signed in
   #   When I change my email address
-  #   Then I see an account updated message
+  #   Then I see an accounts updated message
   scenario 'user changes email address' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user)

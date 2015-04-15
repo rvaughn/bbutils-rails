@@ -4,7 +4,7 @@ Warden.test_mode!
 # Feature: User profile page
 #   As a user
 #   I want to visit my user profile page
-#   So I can see my personal account data
+#   So I can see my personal accounts data
 feature 'User profile page', :devise do
 
   after(:each) do
