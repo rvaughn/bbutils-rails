@@ -100,4 +100,14 @@ namespace :bb do
     end
   end
 
+  desc 'delete all imported Bitbucket data'
+  task :drop => [:environment] do
+    Group.destroy_all
+    Member.destroy_all
+    Repository.destroy_all
+  end
+
+  desc 'reloads all data from Bitbucket'
+  task :reload => [:drop, :update_repos, :update_members, :update_groups]
+  
 end
