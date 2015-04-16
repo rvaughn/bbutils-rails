@@ -3,14 +3,14 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Last Updated</th>
+      <th><%= sort_link_to 'Name', repositories_path, 'name' %></th>
+      <th><%= sort_link_to 'Last Updated', repositories_path, 'date' %></th>
     </tr>
   </thead>
   <tbody>
     <% @repositories.each do |repo| %>
     <tr>
-      <td><%= link_to repo.name, repo.url, target: '_blank' %></td>
+      <td><%= link_to repo.name, repository_path(repo.slug) %></td>
       <td><%= repo.updated_at %></td>
     </tr>
     <% end %>

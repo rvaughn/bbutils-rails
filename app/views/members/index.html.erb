@@ -10,7 +10,7 @@
   <tbody>
     <% @members.each do |member| %>
     <tr>
-      <td><%= member.name %></td>
+      <td><%= link_to member.name, member_path(member.username) %></td>
       <td><%= member.username %></td>
     </tr>
   </tbody>
