@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'rest-client'
 gem 'hashie'
+gem 'jquery-tablesorter'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
