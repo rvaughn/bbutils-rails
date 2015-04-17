@@ -1,4 +1,38 @@
 <h3><%= @repo.name %></h3>
 <p><%= link_to @repo.url, @repo.url, target: '_blank' %></p>
-<p>Created: <%= @repo.created_at %></p>
-<p>Updated: <%= @repo.updated_at %></p>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Groups</th>
+        <th>Permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @repo.group_permissions.sort{ |a,b| a.group.name <=> b.group.name }.each do |perm| %>
+      <tr>
+        <td><%= link_to perm.group.name, group_path(perm.group.slug) %></td>
+        <td><%= perm.permission %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Members</th>
+        <th>Permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @repo.member_permissions.sort{ |a,b| a.member.name <=> b.member.name }.each do |perm| %>
+      <tr>
+        <td><%= link_to perm.member.name, member_path(perm.member.username) %></td>
+        <td><%= perm.permission %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
