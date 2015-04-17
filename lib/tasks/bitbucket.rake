@@ -9,7 +9,6 @@ namespace :bb do
       bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
       repos = bb.repos
       updated = 0
-      added = 0
       repos.each do |r|
         ## simple create:
         # Repository.create(
@@ -24,8 +23,6 @@ namespace :bb do
           record.name = r.name
           record.slug = r.slug
           record.owner = r.owner_username
-          added += 1
-          updated -= 1
         end
         
         record.desc = r.description
@@ -35,7 +32,6 @@ namespace :bb do
         record.save!
       end
       puts "#{updated} repositories updated"
-      puts "#{added} repositories added"
     ensure
       ActiveRecord::Base.record_timestamps = true
     end
@@ -44,60 +40,78 @@ namespace :bb do
   desc 'update member data from Bitbucket'
   task :update_members => [:environment] do
     ## TODO: make this delete removed members
-    begin
-      ActiveRecord::Base.record_timestamps = true
-      bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
-      updated = 0
-      added = 0
-      bb.members.each do |m|
-        record = Member.find_or_initialize_by(username: m.username) do |record|
-          record.username = m.username
-          added += 1
-          updated -= 1
-        end
-      
-        record.name = m.display_name
-        updated += 1
-        record.save!
+    bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
+    updated = 0
+    bb.members.each do |m|
+      record = Member.find_or_initialize_by(username: m.username) do |record|
+        record.username = m.username
       end
-      puts "#{updated} members updated"
-      puts "#{added} members added"
-    ensure
-      ActiveRecord::Base.record_timestamps = true
+      
+      record.name = m.display_name
+      updated += 1
+      record.save!
     end
+    puts "#{updated} members updated"
   end
   
   desc 'update group data from Bitbucket'
   task :update_groups => [:environment] do
     ## TODO: make this delete removed members
-    begin
-      ActiveRecord::Base.record_timestamps = true
-      bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
-      updated = 0
-      added = 0
-      bb.groups.each do |g|
-        record = Group.find_or_initialize_by(slug: g.slug) do |record|
-          record.slug = g.slug
-          record.name = g.name
-          added += 1
-          updated -= 1
-        end
-      
-        record.permission = g.permission
-        updated += 1
-        record.save!
-
-        ## TODO: this won't update.
-        g.members.each do |m|
-          member = Member.find_by_username(m.username)
-          record.members << member
-        end
+    bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
+    updated = 0
+    bb.groups.each do |g|
+      record = Group.find_or_initialize_by(slug: g.slug) do |record|
+        record.slug = g.slug
+        record.name = g.name
       end
-      puts "#{updated} groups updated"
-      puts "#{added} groups added"
-    ensure
-      ActiveRecord::Base.record_timestamps = true
+      
+      record.permission = g.permission
+      updated += 1
+      record.save!
+
+      ## TODO: this won't update.
+      g.members.each do |m|
+        member = Member.find_by_username(m.username)
+        record.members << member
+      end
     end
+    puts "#{updated} groups updated"
+  end
+
+  desc 'updates member permission data from Bitbucket'
+  task :update_member_perms => [:environment] do
+    bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
+    updated = 0
+    bb.privs.each do |priv|
+      repo = Repository.find_by(slug: priv.repository.slug)
+      member = Member.find_by(username: priv.user.username)
+      MemberPermission.create(member: member, repository: repo, permission: priv.privilege)
+      updated += 1
+    end
+    puts "#{updated} member permissions updated"
+  end
+
+  desc 'updates group permission data from Bitbucket'
+  task :update_group_perms => [:environment] do
+    bb = Bitbucket::Client.new(Rails.application.secrets.bitbucket_username, Rails.application.secrets.bitbucket_password)
+    updated = 0
+    ## fewer roundtrips to Bitbucket, but larger replies
+    # Group.find_each do |group|
+    #   bb.group_privs(group.slug).each do |priv|
+    #     repo = Repository.find_by(slug: priv.repository.slug)
+    #     GroupPermission.create(group: group, repository: repo, permission: priv.privilege)
+    #     updated += 1
+    #   end
+    # end
+    ## many roundtrips, smaller replies
+    Repository.find_each do |repo|
+      bb.group_privs_for_repo(repo.owner, repo.slug).each do |priv|
+        group = Group.find_by(slug: priv.group.slug)
+        GroupPermission.create(group: group, repository: repo, permission: priv.privilege)
+        updated += 1
+      end
+    end
+    puts "#{updated} group permissions updated"
   end
 
   desc 'delete all imported Bitbucket data'
@@ -108,6 +122,6 @@ namespace :bb do
   end
 
   desc 'reloads all data from Bitbucket'
-  task :reload => [:drop, :update_repos, :update_members, :update_groups]
+  task :reload => [:drop, :update_repos, :update_members, :update_groups, :update_member_perms, :update_group_perms]
   
 end
