@@ -1,1 +1,17 @@
 <h3><%= @group.name %></h3>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Member</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @group.members.sort{ |a,b| a.name <=> b.name }.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, member_path(member.username) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
