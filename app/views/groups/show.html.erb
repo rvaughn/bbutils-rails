@@ -1,15 +1,41 @@
 <h3><%= @group.name %></h3>
-<div>
-  <table class="table">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Members</h3>
+  </div>
+  <table class="table table-striped">
+    <% comment do %>
     <thead>
       <tr>
-        <th>Member</th>
+        <th>Name</th>
       </tr>
     </thead>
+    <% end %>
     <tbody>
       <% @group.members.sort{ |a,b| a.name <=> b.name }.each do |member| %>
       <tr>
         <td><%= link_to member.name, member_path(member.username) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Repositories</h3>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @group.group_permissions.sort{ |a,b| a.repository.name <=> b.repository.name }.each do |perm| %>
+      <tr>
+        <td><%= link_to perm.repository.name, repository_path(perm.repository.slug) %></td>
+        <td width="30%"><%= perm.permission %></td>
       </tr>
       <% end %>
     </tbody>

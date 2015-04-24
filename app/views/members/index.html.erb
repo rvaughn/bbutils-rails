@@ -1,18 +1,20 @@
 <h3>Members</h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Full Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @members.each do |member| %>
-    <tr>
-      <td><%= link_to member.name, member_path(member.username) %></td>
-      <td><%= member.username %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<div class="panel panel-default">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, member_path(member.username) %></td>
+        <td><%= member.username %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

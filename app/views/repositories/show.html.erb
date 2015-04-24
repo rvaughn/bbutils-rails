@@ -1,10 +1,13 @@
 <h3><%= @repo.name %></h3>
 <p><%= link_to @repo.url, @repo.url, target: '_blank' %></p>
-<div>
-  <table class="table">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Groups</h3>
+  </div>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>Groups</th>
+        <th>Name</th>
         <th>Permission</th>
       </tr>
     </thead>
@@ -12,17 +15,21 @@
       <% @repo.group_permissions.sort{ |a,b| a.group.name <=> b.group.name }.each do |perm| %>
       <tr>
         <td><%= link_to perm.group.name, group_path(perm.group.slug) %></td>
-        <td><%= perm.permission %></td>
+        <td width="30%"><%= perm.permission %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<div>
-  <table class="table">
+<% unless @repo.member_permissions.empty? %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Members</h3>
+  </div>  
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>Members</th>
+        <th>Name</th>
         <th>Permission</th>
       </tr>
     </thead>
@@ -30,9 +37,10 @@
       <% @repo.member_permissions.sort{ |a,b| a.member.name <=> b.member.name }.each do |perm| %>
       <tr>
         <td><%= link_to perm.member.name, member_path(perm.member.username) %></td>
-        <td><%= perm.permission %></td>
+        <td width="30%"><%= perm.permission %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+<% end %>
