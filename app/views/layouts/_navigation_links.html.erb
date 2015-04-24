@@ -1,5 +1,6 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
+  <li><%= link_to 'Stats', root_path %></li>
   <li><%= link_to 'Repositories', repositories_path %></li>
   <li><%= link_to 'Members', members_path %></li>
   <li><%= link_to 'Groups', groups_path %></li>

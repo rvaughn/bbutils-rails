@@ -10,11 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rest-client'
 gem 'hashie'
 gem 'jquery-tablesorter'
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
+gem 'bootswatch-rails'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form'
@@ -25,7 +21,16 @@ group :development do
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end
 group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
@@ -35,10 +40,4 @@ group :production do
   gem 'pg'
   gem 'puma'
   gem 'rails_12factor'
-end
-group :test do
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'launchy'
-  gem 'selenium-webdriver'
 end
