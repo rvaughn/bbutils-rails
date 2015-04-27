@@ -12,9 +12,76 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <div class="wrapper"><div class="box">
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+        <!-- main bar -->
+        <ul class="nav hidden-xs" id="lg-menu">
+          <li>
+            <%= link_to(root_path) do %>
+              Dashboard
+              <%= fa_icon "dashboard", class: "menu-icon menu-icon-right" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(repositories_path) do %>
+              Repositories
+              <%= fa_icon "code-fork", class: "menu-icon menu-icon-right" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(members_path) do %>
+              Members
+              <%= fa_icon "user", class: "menu-icon menu-icon-right" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(groups_path) do %>
+              Groups
+              <%= fa_icon "group", class: "menu-icon menu-icon-right" %>
+            <% end %>
+          </li>
+        </ul>
+        <!-- minified bar -->
+        <ul class="nav visible-xs" id="xs-menu">
+          <li>
+            <%= link_to(root_path, class: "text-center") do %>
+              <%= fa_icon "dashboard", class: "menu-icon" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(repositories_path, class: "text-center") do %>
+              <%= fa_icon "code-fork", class: "menu-icon" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(members_path, class: "text-center") do %>
+              <%= fa_icon "user", class: "menu-icon" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(groups_path, class: "text-center") do %>
+              <%= fa_icon "group", class: "menu-icon" %>
+            <% end %>
+          </li>
+        </ul>
+        <!-- expander -->
+        <ul class="nav">
+          <li>
+            <a href="#" data-toggle="offcanvas" class="visible-xs text-center">
+              <%= fa_icon "angle-double-right", class: "menu-icon" %>
+            </a>
+          </li>
+        </ul>
+        <!-- footer -->
+        <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+        </ul>
+      </div>
+      <main role="main" class="column col-sm-10 col-xs-11">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </main>
+    </div>
+    </div></div>
   </body>
 </html>
