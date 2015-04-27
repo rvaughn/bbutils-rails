@@ -1,6 +1,9 @@
 // import the CSS framework
+@import "font-awesome";
 @import "bootstrap-sprockets";
+@import "bootswatch/spacelab/variables";
 @import "bootstrap";
+@import "bootswatch/spacelab/bootswatch";
 
 // make all images responsive by default
 img {
@@ -9,7 +12,7 @@ img {
   }
 // override for the 'Home' navigation link
 .navbar-brand {
-  font-size: inherit;
+  font-size: 1.5em;
   }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
