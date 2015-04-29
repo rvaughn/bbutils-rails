@@ -1,9 +1,9 @@
 // import the CSS framework
 @import "font-awesome";
 @import "bootstrap-sprockets";
-@import "bootswatch/spacelab/variables";
+//@import "bootswatch/spacelab/variables";
 @import "bootstrap";
-@import "bootswatch/spacelab/bootswatch";
+//@import "bootswatch/spacelab/bootswatch";
 
 // make all images responsive by default
 img {
@@ -40,7 +40,8 @@ img {
 
 main {
   @extend .container;
-  background-color: #eee;
+  //background-color: #eee;
+  background-color: #ffffff;
   //padding-bottom: 80px;
   width: 100%;
   }
@@ -49,6 +50,19 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+.navbar-inverse {
+  background-color: #446e9b;
+  border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #eee;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #eee;
+}
 
 // Styles for form views
 // using Bootstrap
