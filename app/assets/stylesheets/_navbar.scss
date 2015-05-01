@@ -1,0 +1,22 @@
+$navbar-height: 51px;
+
+.navbar-brand {
+  font-size: 1.5em;
+}
+
+.navbar-inverse {
+  background-color: #446e9b;
+  border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #eee;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #eee;
+}
+
+body {
+  padding-top: $navbar-height;
+}

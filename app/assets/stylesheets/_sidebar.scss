@@ -1,0 +1,108 @@
+$sidebar-width: 200px;
+$minibar-width: 50px;
+
+/*
+.wrapper, .row {
+  height: 100%;
+  margin-left:0;
+  margin-right:0;
+}
+
+.wrapper:before, .wrapper:after,
+.column:before, .column:after {
+  content: "";
+  display: table;
+}
+
+.wrapper:after,
+.column:after {
+  clear: both;
+}
+
+.column {
+  height: 100%;
+  overflow: auto;
+  *zoom: 1;
+}
+
+.box {
+  bottom: 0; // increase for footer use
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  //background-color:#444444;
+  //  background-image:url('/assets/example/bg_suburb.jpg');
+  //  background-size:cover;
+  //  background-attachment:fixed;
+  
+  margin-top: 51px; // accommodate the navbar
+}
+*/
+
+.sidebar-icon {
+  font-size: 1.5em;
+}
+
+.sidebar-normal i {
+  @extend .sidebar-icon;
+  float: right;
+  width: 1.5em;
+  text-align: center;
+}
+
+.sidebar-mini i {
+  @extend .sidebar-icon;
+}
+
+.sidebar-mini a {
+  text-align: center;
+}
+
+.sidebar {
+  @extend .navmenu;
+  @extend .navmenu-fixed-left;
+  padding: 0px;
+  padding-top: 15px;
+}
+
+.sidebar-normal {
+  @extend .sidebar;
+  width: $sidebar-width;
+}
+
+.sidebar-mini {
+  @extend .sidebar;
+  width: $minibar-width;
+}
+
+.sidebar, .sidebar a, .sidebar-footer a, .sidebar .nav > li > a {
+  color: #eee;
+  //background-color: transparent;
+  background-color: #444;
+  text-shadow: 0 0 2px #000000;
+  padding-left: 5px;
+}
+
+.sidebar .nav li>a:hover {
+  background-color: #393939;
+}
+
+.sidebar-footer {
+  background-color: #444;
+  position: absolute;
+  bottom: 5px;
+  padding: 5px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-left: $sidebar-width;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-left: $minibar-width;
+  }
+}
