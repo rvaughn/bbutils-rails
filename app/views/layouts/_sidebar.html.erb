@@ -1,0 +1,35 @@
+<%# main bar %>
+<div class="sidebar-normal hidden-xs">
+  <ul class="nav navmenu-nav">
+    <li><%= link_with_icon root_path, icon_overview, "Overview" %></li>
+    <li><%= link_with_icon repositories_path, icon_repositories, "Repositories" %></li>
+    <li><%= link_with_icon members_path, icon_members, "Members" %></li>
+    <li><%= link_with_icon groups_path, icon_groups, "Groups" %></li>
+    <li><%= link_with_icon "#", icon_shrink_sidebar, "Hide" %></li>
+    <!--
+        <li>
+          <a href="#" data-toggle="offcanvas">
+            Hide
+            <%= fa_icon "angle-double-left" %>
+          </a>
+        </li>
+        -->
+  </ul>
+</div>
+<%# minified bar %>
+<div class="sidebar-mini visible-xs">
+  <ul class="nav navmenu-nav">
+    <li><%= link_with_icon root_path, icon_overview %></li>
+    <li><%= link_with_icon repositories_path, icon_repositories %></li>
+    <li><%= link_with_icon members_path, icon_members %></li>
+    <li><%= link_with_icon groups_path, icon_groups %></li>
+    <li><%= link_with_icon "#", icon_expand_sidebar %></li>
+    <!--
+        <li>
+          <a href="#" data-toggle="offcanvas">
+            <%= fa_icon "angle-double-right" %>
+          </a>
+        </li>
+        -->
+  </ul>
+</div>
