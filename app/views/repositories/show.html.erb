@@ -1,6 +1,6 @@
-<h3><%= @repo.name %></h3>
+<h3><%= repository_icon %> <%= @repo.name %></h3>
 <p><%= link_to @repo.url, @repo.url, target: '_blank' %></p>
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Groups</h3>
   </div>
@@ -22,7 +22,7 @@
   </table>
 </div>
 <% unless @repo.member_permissions.empty? %>
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Members</h3>
   </div>  

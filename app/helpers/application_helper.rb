@@ -36,5 +36,17 @@ module ApplicationHelper
   def icon_shrink_sidebar
     "angle-double-left"
   end
+
+  def group_icon
+    fa_icon(icon_groups)
+  end
+
+  def member_icon
+    fa_icon(icon_members)
+  end
+
+  def repository_icon
+    fa_icon(icon_repositories)
+  end
   
 end
