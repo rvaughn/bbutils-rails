@@ -1,45 +1,6 @@
 $sidebar-width: 200px;
 $minibar-width: 60px;
 
-/*
-.wrapper, .row {
-  height: 100%;
-  margin-left:0;
-  margin-right:0;
-}
-
-.wrapper:before, .wrapper:after,
-.column:before, .column:after {
-  content: "";
-  display: table;
-}
-
-.wrapper:after,
-.column:after {
-  clear: both;
-}
-
-.column {
-  height: 100%;
-  overflow: auto;
-  *zoom: 1;
-}
-
-.box {
-  bottom: 0; // increase for footer use
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  //background-color:#444444;
-  //  background-image:url('/assets/example/bg_suburb.jpg');
-  //  background-size:cover;
-  //  background-attachment:fixed;
-  
-  margin-top: 51px; // accommodate the navbar
-}
-*/
-
 .sidebar-icon {
   font-size: 1.5em;
 }
@@ -64,10 +25,7 @@ $minibar-width: 60px;
   @extend .navmenu-fixed-left;
   padding: 0px;
   padding-top: 15px;
-
-  color: #eee;
   background-color: #444;
-  text-shadow: 0 0 2px #000000;
 }
 
 .sidebar-normal {
