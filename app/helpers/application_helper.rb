@@ -37,16 +37,16 @@ module ApplicationHelper
     "angle-double-left"
   end
 
-  def group_icon
-    fa_icon(icon_groups)
+  def group_icon(options = {})
+    fa_icon(icon_groups, options)
   end
 
-  def member_icon
-    fa_icon(icon_members)
+  def member_icon(options = {})
+    fa_icon(icon_members, options)
   end
 
-  def repository_icon
-    fa_icon(icon_repositories)
+  def repository_icon(options = {})
+    fa_icon(icon_repositories, options)
   end
   
 end

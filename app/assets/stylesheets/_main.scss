@@ -2,7 +2,7 @@
 img {
   @extend .img-responsive;
   margin: 0 auto;
-  }
+}
 
 main {
   @extend .container;
@@ -10,9 +10,9 @@ main {
   background-color: #ffffff;
   //padding-bottom: 80px;
   width: 100%;
-  }
+}
 
 section {
   @extend .row;
   margin-top: 20px;
-  }
+}

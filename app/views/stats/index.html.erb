@@ -1,19 +1,36 @@
 <h3>Account Statistics</h3>
-<div class="panel panel-default">
-  <!--
-  <div class="panel-heading"><h3 class="panel-title">Account Statistics</h3></div>
-  -->
-  <div class="panel-body">
-    <ol class="list-unstyled">
-      <li>
-        <span class="col-sm-2">Repositories</span><%= @repo_count %>
-      </li>
-      <li>
-        <span class="col-sm-2">Members</span><%= @member_count %>
-      </li>
-      <li>
-        <span class="col-sm-2">Groups</span><%= @group_count %>
-      </li>
-    </ol>
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel panel-primary stat-panel">
+      <div class="panel-body">
+        <%= repository_icon class: 'fa-4x stat-icon' %>
+        <div class="stat-text">
+          <p class="stat-number"><%= @repo_count %></p>
+          <p class="stat-title">Repositories</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-primary stat-panel">
+      <div class="panel-body">
+        <%= member_icon class: 'fa-4x stat-icon' %>
+        <div class="stat-text">
+          <p class="stat-number"><%= @member_count %></p>
+          <p class="stat-title">Members</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-primary stat-panel">
+      <div class="panel-body">
+        <%= group_icon class: 'fa-4x stat-icon' %>
+        <div class="stat-text">
+          <p class="stat-number"><%= @group_count %></p>
+          <p class="stat-title">Groups</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
