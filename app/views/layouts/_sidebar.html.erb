@@ -25,9 +25,14 @@
       <% end %>
     </li>
   </ul>
-  <!--
+  <% comment do %>
   <ul class="nav navmenu-nav sidebar-footer">
-    <li><%= link_with_icon "#", icon_shrink_sidebar, "Hide", data: { toggle: 'shrink-sidebar' } %></li>
+    <li>
+      <%= link_to "#" do %>
+        <span class="hidden-xs"> </span>
+        <%= fa_icon icon_shrink_sidebar, data: { toggle: 'sidebar'} %>
+      <% end %>
+    </li>
   </ul>
-  -->
+  <% end %>
 </div>
