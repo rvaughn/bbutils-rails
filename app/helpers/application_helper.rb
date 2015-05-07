@@ -4,14 +4,6 @@ module ApplicationHelper
   def comment
   end
 
-  def link_with_icon(path, icon_name, text = '', options = {})
-    if text.is_a? Hash
-      options = text
-      text = ''
-    end
-    content_tag(:a, text + fa_icon(icon_name), options.merge( href: url_for(path) ), false)
-  end
-
   # icon mappers, for easy swapping
   def icon_overview
     "dashboard"

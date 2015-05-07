@@ -1,24 +1,5 @@
-$sidebar-width: 200px;
-$minibar-width: 60px;
-
-.sidebar-icon {
-  font-size: 1.5em;
-}
-
-.sidebar-normal i {
-  @extend .sidebar-icon;
-  float: right;
-  width: 1.5em;
-  text-align: center;
-}
-
-.sidebar-mini i {
-  @extend .sidebar-icon;
-}
-
-.sidebar-mini a {
-  text-align: center;
-}
+$sidebar-width: 201px;
+$minibar-width: 61px;
 
 .sidebar {
   @extend .navmenu;
@@ -26,16 +7,6 @@ $minibar-width: 60px;
   padding: 0px;
   padding-top: 15px;
   background-color: #444;
-}
-
-.sidebar-normal {
-  @extend .sidebar;
-  width: $sidebar-width;
-}
-
-.sidebar-mini {
-  @extend .sidebar;
-  width: $minibar-width;
 }
 
 .sidebar a, .sidebar-footer a, .sidebar .nav > li > a {
@@ -54,14 +25,39 @@ $minibar-width: 60px;
   width: 100%;
 }
 
+.sidebar i {
+  font-size: 1.5em;
+  float: right;
+  width: 30px;
+  text-align: center;
+  display: block;
+  height: 20px;
+}
+
 @media (min-width: 768px) {
   body {
     padding-left: $sidebar-width;
   }
+
+  .sidebar {
+    width: $sidebar-width;
+  }
+
+  .sidebar i {
+    float: right;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   body {
     padding-left: $minibar-width;
+  }
+
+  .sidebar {
+    width: $minibar-width;
+  }
+
+  .sidebar i {
+    float: none;
   }
 }

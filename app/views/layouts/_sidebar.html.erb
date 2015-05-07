@@ -1,28 +1,33 @@
-<%# main bar %>
-<div class="sidebar-normal hidden-xs">
+<div class="sidebar">
   <ul class="nav navmenu-nav">
-    <li><%= link_with_icon root_path, icon_overview, "Overview" %></li>
-    <li><%= link_with_icon repositories_path, icon_repositories, "Repositories" %></li>
-    <li><%= link_with_icon members_path, icon_members, "Members" %></li>
-    <li><%= link_with_icon groups_path, icon_groups, "Groups" %></li>
+    <li>
+      <%= link_to root_path do %>
+        <span class="hidden-xs">Overview</span>
+        <%= fa_icon icon_overview %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to repositories_path do %>
+        <span class="hidden-xs">Repositories</span>
+        <%= fa_icon icon_repositories %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to members_path do %>
+        <span class="hidden-xs">Members</span>
+        <%= fa_icon icon_members %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to groups_path do %>
+        <span class="hidden-xs">Groups</span>
+        <%= fa_icon icon_groups %>
+      <% end %>
+    </li>
   </ul>
   <!--
   <ul class="nav navmenu-nav sidebar-footer">
     <li><%= link_with_icon "#", icon_shrink_sidebar, "Hide", data: { toggle: 'shrink-sidebar' } %></li>
-  </ul>
-  -->
-</div>
-<%# minified bar %>
-<div class="sidebar-mini visible-xs">
-  <ul class="nav navmenu-nav">
-    <li><%= link_with_icon root_path, icon_overview %></li>
-    <li><%= link_with_icon repositories_path, icon_repositories %></li>
-    <li><%= link_with_icon members_path, icon_members %></li>
-    <li><%= link_with_icon groups_path, icon_groups %></li>
-  </ul>
-  <!--
-  <ul class="nav navmenu-nav sidebar-footer">
-    <li><%= link_with_icon "#", icon_expand_sidebar, data: { toggle: 'expand-sidebar' } %></li>
   </ul>
   -->
 </div>
