@@ -35,7 +35,7 @@ $minibar-width: 61px;
 }
 
 @media (min-width: 768px) {
-  body {
+  .content-area {
     padding-left: $sidebar-width;
   }
 
@@ -49,7 +49,7 @@ $minibar-width: 61px;
 }
 
 @media (max-width: 767px) {
-  body {
+  .content-area {
     padding-left: $minibar-width;
   }
 

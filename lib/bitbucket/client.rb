@@ -37,7 +37,7 @@ module Bitbucket
 
     def get_repos(url)
       return [] unless url
-      
+
       repo_text = get(url)
       obj = JSON.parse(repo_text)
       next_url = obj['next']
@@ -45,7 +45,7 @@ module Bitbucket
     end
 
     def repos
-      get_repos("#{BB_API2_BASE}/repositories/#{@user}?pagelen=20")
+      get_repos("#{BB_API2_BASE}/repositories/#{@user}?pagelen=100")
     end
 
     def get_members(url)
