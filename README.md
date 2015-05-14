@@ -1,50 +1,14 @@
-Bbutils Rails
-================
+Bitbucket Browser
+=================
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+This simple application allows you to quickly browse the repositories,
+members, and groups - and their relationships - for a Bitbucket team
+account. This fills in gaps in the existing Bitbucket interface that
+make it difficult to discover some of these relationships, for
+example, listing all of the repositories a specific member has
+explicit permissions for.
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
-
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
-
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
-
-Ruby on Rails
--------------
-
-This application requires:
-
-- Ruby 2.2.1
-- Rails 4.2.1
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Getting Started
----------------
-
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
+At the moment all data must be retrieved from Bitbucket offline using
+included rake tasks. In addition, all Bitbucket data is currently
+reloaded from scratch on every update, since there is no easy way to
+query Bitbucket for account changes.
